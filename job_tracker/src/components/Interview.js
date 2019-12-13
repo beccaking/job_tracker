@@ -1,11 +1,14 @@
 import React from 'react';
 
-class App extends React.Component{
+class Interview extends React.Component{
   render(){
-    <div>
-    Interview Component rendering
-    </div>
+    return(
+      <div className='column interview'>
+      <h3>Interview (0)</h3>
+      <div className='box'></div>
+      </div>
+    )
   }
 }
 
-export default App;
+export default Interview;
