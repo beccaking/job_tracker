@@ -52,7 +52,7 @@ class Listings extends React.Component{
   render(){
     return(
       <div className='column-listings'>
-        <h3>Listing (0)</h3>
+        <h3>Listing ({this.state.listings.length})</h3>
         <div className='box'>
           {this.state.listings.map(listing => {
             return(
