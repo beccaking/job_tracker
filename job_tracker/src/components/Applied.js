@@ -7,7 +7,7 @@ class Applied extends React.Component{
         <h3>Applied (0)</h3>
         <div className='box'>
           <div className='job'>
-            <h4>Date</h4>
+            <h4>Date:</h4>
             <h4>Company</h4>
             <h4>Position</h4>
             <h4>More Info</h4>
