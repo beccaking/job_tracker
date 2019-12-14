@@ -7,13 +7,16 @@ class Form extends React.Component {
       company: '',
       position: '',
       url: '',
-      info: null
+      info: ''
     }
   }
   handleChange = (event) => {
     this.setState({[event.target.id]: event.target.value})
   }
-
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.handleUpdate(this.state)
+  }
   componentDidMount(){
     this.setState({
       company: this.props.formInputs.company,
@@ -24,8 +27,8 @@ class Form extends React.Component {
   }
   render(){
     return(
-        <div class='editform'>
-          <form>
+        <div className='editform'>
+          <form onSubmit={this.handleSubmit}>
             <label htmlFor='company'>Company</label>
             <input type='text' value={this.state.company} id='company' onChange={this.handleChange}/>
             <label htmlFor='position'>Position</label>

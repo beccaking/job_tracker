@@ -33,9 +33,25 @@ class App extends React.Component{
         company: 'boo',
         position: '',
         url: '',
-        info: null
+        info: ''
       }
     }
+  }
+  fetchJobs = () => {
+    console.log('get all jobs')
+  }
+  handleChange = (event) => {
+    this.setState({[event.target.id]: event.target.value})
+  }
+  handleCreate = (createdData) => {
+    console.log('data for post request', createdData)
+  }
+  handleUpdate = (updatedData) => {
+    console.log('data for put request', updatedData)
+    this.handleView('list')
+  }
+  handleDelete = (deletedData) => {
+    console.log('data for delete request', deletedData)
   }
   handleView = (view, data)=>{
     let formInputs = {
@@ -73,11 +89,11 @@ class App extends React.Component{
         </header>
         <div className='addForm'>
         <label htmlFor='form'>Add a New Job Listing</label>
-          <form id='form'>
-            <input type='text' placeholder='Company'/>
-            <input type='text' placeholder='Position'/>
-            <input type='text' placeholder='URL'/>
-            <input type='text' placeholder='More Info'/>
+          <form id='form' onSubmit={this.handleCreate}>
+            <input type='text' placeholder='Company' onChange={this.handleChange}/>
+            <input type='text' placeholder='Position' onChange={this.handleChange}/>
+            <input type='text' placeholder='URL' onChange={this.handleChange}/>
+            <input type='text' placeholder='More Info' onChange={this.handleChange}/>
             <input type='submit'/>
           </form>
           <br/>
@@ -85,10 +101,10 @@ class App extends React.Component{
         <div className='box-container'>
         {
           (this.state.view === 'form')
-          ? <Form handleView={this.handleView} formInputs={this.state.formInputs}/>
+          ? <Form handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs}/>
           : null
         }
-            <Listings handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
+            <Listings handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
             <Applied jobs={this.state.jobs}/>
             <Interview jobs={this.state.jobs}/>
             <TryAgain jobs={this.state.jobs}/>

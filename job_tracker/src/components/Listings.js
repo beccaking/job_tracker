@@ -20,7 +20,7 @@ class Listings extends React.Component{
               <a href={job.url}>{job.url}</a>
               <br/>
               <button onClick={()=>{this.showForm(job)}}>Edit</button>
-              <button>Delete</button>
+              <button onClick={()=>{this.props.handleDelete(job)}}>Delete</button>
               <button>Applied</button>
             </div>
           ))
