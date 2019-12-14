@@ -5,6 +5,16 @@ header {
 h3{
   text-align: center;
 }
+
+.addForm {
+  width: 1207px;
+  margin: 10px auto;
+}
+
+.job {
+  border: 1px solid black;
+}
+
 .box {
   width: 300px;
   border: 1px solid black;
@@ -15,7 +25,6 @@ h3{
   flex-direction: row;
   width: 1207px;
   margin: 0 auto;
-  border: 1px solid black;
 }
 
 body {
