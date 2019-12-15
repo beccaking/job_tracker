@@ -30,7 +30,7 @@ class App extends React.Component{
         }
       ],
       formInputs: {
-        company: 'boo',
+        company: '',
         position: '',
         url: '',
         info: ''

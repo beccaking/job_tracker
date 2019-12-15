@@ -1,0 +1,15 @@
+{
+    "name": "rebeccaking/job_tracker",
+    "authors": [
+        {
+            "name": "Becca King",
+            "email": "becca.king3232@gmail.com"
+        }
+    ],
+    "require": {
+        "erusev/parsedown": "~1.0"
+    },
+    "config": {
+      "vendor-dir": "composer_vendor"
+    }
+}
