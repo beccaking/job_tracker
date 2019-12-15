@@ -1,5 +1,5 @@
 <?php
-$dbconn = pg_connect(getenv("DATABASE_URL"));
+$dbconn = pg_connect("host=localhost dbname=jobtracker");
 
 class Listing{
   public $id;
