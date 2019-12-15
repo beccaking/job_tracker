@@ -1,5 +1,5 @@
 <?php
-$dbconn = pg_connect(getenv("DATABASE_URL"));
+$dbconn = pg_connect("host=localhost dbname=jobtracker");
 
 class Listing{
   public $id;
@@ -34,8 +34,8 @@ class Listing{
 
 class Listings{
   static function create($listing){
-    $query = "INSERT INTO listings (company, position, positionurl, notes) VALUES ($1, $2, $3, $4)";
-    $query_params = array($listing->company, $listing->position, $listing->positionURL, $listing->notes);
+    $query = "INSERT INTO listings (company, position, positionurl, notes, listingDate) VALUES ($1, $2, $3, $4, $5)";
+    $query_params = array($listing->company, $listing->position, $listing->positionURL, $listing->notes, date("m-d-Y"));
     pg_query_params($query, $query_params);
 
     return self::all();

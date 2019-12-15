@@ -4,14 +4,16 @@ import Applied from './components/Applied.js'
 import Interview from './components/Interview.js'
 import TryAgain from './components/TryAgain.js'
 import Form from './components/Form.js'
+import CreateForm from './components/CreateForm.js'
 
 // Set URL for database
 let baseUrl = '';
 if (process.env.NODE_ENV === 'development') {
   baseUrl = 'http://localhost:8888'
 } else {
-  console.log('this is for heroku');
+  baseUrl = "https://job-tracker-phpreact.herokuapp.com/"
 }
+
 
 class App extends React.Component{
   constructor(props){
@@ -22,11 +24,12 @@ class App extends React.Component{
       formInputs: {
         company: '',
         position: '',
-        url: '',
-        info: ''
+        positionURL: '',
+        notes: ''
       }
     }
   }
+
 
   fetchJobs = () => {
     // console.log('get all jobs')
@@ -38,18 +41,42 @@ class App extends React.Component{
 
   }
 
+
   handleChange = (event) => {
     this.setState({[event.target.id]: event.target.value})
   }
 
-  handleCreate = (createdData) => {
-    console.log('data for post request', createdData)
+
+  handleCreate = (createData) => {
+    fetch(`${baseUrl}/listings`, {
+      body: JSON.stringify(createData),
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    }).then(createdJobs => {
+        return createdJobs.json()
+      }).then(jsonedJobs => {
+        this.setState({jobs: jsonedJobs})
+      }).catch(err => console.log(err))
   }
 
-  handleUpdate = (updatedData) => {
-    console.log('data for put request', updatedData)
-    this.handleView('list')
+
+  handleUpdate = (updateData) => {
+    fetch(`${baseUrl}/listings/${updateData.id}`, {
+      body: JSON.stringify(updateData),
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    }).then(updatedPost => {
+        this.handleView('list')
+        this.fetchJobs()
+      }).catch(err => console.log(err))
   }
+
 
   handleDelete = (id) => {
     fetch(`${baseUrl}/listings/${id}`, {
@@ -65,12 +92,15 @@ class App extends React.Component{
       }).catch(err => console.log(err))
   }
 
+
   handleView = (view, data)=>{
+
     let formInputs = {
       company:'',
       position:'',
-      url:'',
-      info:''
+      positionURL:'',
+      notes:'',
+      id: null
     }
 
     switch(view){
@@ -80,50 +110,52 @@ class App extends React.Component{
       formInputs = {
         company: data.company,
         position: data.position,
-        url: data.url,
-        info: data.info
+        positionURL: data.positionURL,
+        notes: data.notes,
+        id: data.id
       }
       break
       default:
       break
     }
+
     this.setState({
       view: view,
       formInputs: formInputs
     })
   }
 
+
   // Run fetchListings only once after page loads
   componentDidMount(){
     this.fetchJobs()
   }
+
 
   render(){
     return(
       <div className='container'>
         <header>
           <h1>Job Tracker</h1>
-          <h2>Today's Date: 12-13-19</h2>
+          <h2>Today's Date: {new Date().toLocaleDateString("en-US")}</h2>
         </header>
 
         <div className='addForm'>
-        <label htmlFor='form'>Add a New Job Listing</label>
-          <form id='form' onSubmit={this.handleCreate}>
-            <input type='text' placeholder='Company' onChange={this.handleChange}/>
-            <input type='text' placeholder='Position' onChange={this.handleChange}/>
-            <input type='text' placeholder='URL' onChange={this.handleChange}/>
-            <input type='text' placeholder='More Info' onChange={this.handleChange}/>
-            <input type='submit'/>
-          </form>
-          <br/>
+        {
+          (this.state.view === 'list')
+          ? <>
+          <h2>Add a New Job Listing</h2>
+          <CreateForm handleCreate={this.handleCreate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+          </>
+          : <>
+          <h2>Edit Job Listing</h2>
+          <Form handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+          </>
+
+        }
         </div>
 
         <div className='box-container'>
-        {
-          (this.state.view === 'form')
-          ? <Form handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs}/>
-          : null
-        }
             <Listings handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
             <Applied jobs={this.state.jobs}/>
             <Interview jobs={this.state.jobs}/>

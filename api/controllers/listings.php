@@ -28,6 +28,8 @@ if ($_REQUEST["action"]=== "index") {
 } elseif ($_REQUEST["action"]=== "delete") {
   $all_listings = Listings::delete($_REQUEST["id"]);
   echo json_encode($all_listings);
+} elseif ($_REQUEST["action"]==="test"){
+  echo 'test';
 }
 
 ?>
