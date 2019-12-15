@@ -10,6 +10,18 @@ h3{
   text-align: center;
 }
 
+
+
+.addForm {
+  width: 1207px;
+  margin: 10px auto;
+}
+
+.job {
+  border: 1px solid black;
+}
+
+
 .box {
   /* width: 300px; */
   border: 1px solid black;
@@ -27,11 +39,17 @@ h3{
 
 .box-container {
   display: flex;
+
   /* flex-direction: row;
   width: 1207px; */
   justify-content: space-around;
   margin: 10px auto;
   border: 1px solid black;
+
+/*   flex-direction: row;
+  width: 1207px;
+  margin: 0 auto; */
+
 }
 
 body {
