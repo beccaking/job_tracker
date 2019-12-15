@@ -6,25 +6,36 @@ class Form extends React.Component {
     this.state = {
       company: '',
       position: '',
-      url: '',
-      info: ''
+      positionURL: '',
+      notes: ''
     }
   }
+
+
   handleChange = (event) => {
     this.setState({[event.target.id]: event.target.value})
   }
+
+
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.handleUpdate(this.state)
+    if(this.props.view === 'list') {
+      this.props.handleCreate(this.state)
+    } else if(this.props.view === 'form') {
+      this.props.handleUpdate(this.state)
+    }
   }
+
   componentDidMount(){
     this.setState({
       company: this.props.formInputs.company,
       position: this.props.formInputs.position,
-      url: this.props.formInputs.url,
-      info: this.props.formInputs.info
+      positionURL: this.props.formInputs.positionURL,
+      notes: this.props.formInputs.notes
     })
   }
+
+
   render(){
     return(
         <div className='editform'>
@@ -33,13 +44,21 @@ class Form extends React.Component {
             <input type='text' value={this.state.company} id='company' onChange={this.handleChange}/>
             <label htmlFor='position'>Position</label>
             <input type='text' value={this.state.position} id='position' onChange={this.handleChange}/>
-            <label htmlFor='url'>URL</label>
-            <input type='text' value={this.state.url} id='url' onChange={this.handleChange}/>
-            <label htmlFor='info'>Info</label>
-            <input type='text' value={this.state.info} id='info' onChange={this.handleChange}/>
-            <input type='submit'/>
+            <label htmlFor='positionURL'>URL</label>
+            <input type='text' value={this.state.positionURL} id='positionURL' onChange={this.handleChange}/>
+            <label htmlFor='notes'>Info</label>
+            <input type='text' value={this.state.notes} id='notes' onChange={this.handleChange}/>
+
+            {
+              (this.props.view === 'list')
+              ? <input type='submit' value="Add"/>
+              : <>
+              <input type='submit' value="Edit"/>
+              <button onClick={()=>{this.props.handleView('list')}}>Cancel</button>
+              </>
+            }
+
           </form>
-          <button onClick={()=>{this.props.handleView('list')}}>Cancel</button>
         </div>
     )
   }
