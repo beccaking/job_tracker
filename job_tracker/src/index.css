@@ -13,24 +13,18 @@ h3{
 
 
 .addForm {
-  width: 1207px;
+  /* width: 1207px; */
   margin: 10px auto;
 }
 
 .job {
   border: 1px solid black;
+  margin: 10px;
 }
-
 
 .box {
   /* width: 300px; */
   border: 1px solid black;
-}
-
-.job{
-  border: 1px solid black;
-  margin: 10px;
-  flex-basis: 20%;
 }
 
 .column-listings, .column-applied, .column-interview, .column-tryagain{
