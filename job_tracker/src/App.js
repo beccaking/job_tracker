@@ -13,6 +13,7 @@ if (process.env.NODE_ENV === 'development') {
   console.log('this is for heroku');
 }
 
+
 class App extends React.Component{
   constructor(props){
     super(props)
@@ -28,6 +29,7 @@ class App extends React.Component{
     }
   }
 
+
   fetchJobs = () => {
     // console.log('get all jobs')
     fetch(`${baseUrl}/listings`)
@@ -38,13 +40,13 @@ class App extends React.Component{
 
   }
 
+
   handleChange = (event) => {
     this.setState({[event.target.id]: event.target.value})
   }
 
-  handleCreate = (createData) => {
-    // console.log('data for post request', createdData)
 
+  handleCreate = (createData) => {
     fetch(`${baseUrl}/listings`, {
     body: JSON.stringify(createData),
     method: 'POST',
@@ -53,23 +55,21 @@ class App extends React.Component{
       'Content-Type': 'application/json'
     }
   })
-  .then(createdPost => {
-    return createdPost.json()
+  .then(createdJobs => {
+    return createdJobs.json()
   })
-  .then(jsonedPost => {
-    this.props.handleView("home");
-    this.setState(prevState => {
-      prevState.posts = jsonedPost
-      return { posts: prevState.posts }
-    })
+  .then(jsonedJobs => {
+    this.setState({jobs: jsonedJobs})
   })
   .catch(err => console.log(err))
   }
+
 
   handleUpdate = (updatedData) => {
     console.log('data for put request', updatedData)
     this.handleView('list')
   }
+
 
   handleDelete = (id) => {
     fetch(`${baseUrl}/listings/${id}`, {
@@ -84,6 +84,7 @@ class App extends React.Component{
         })
       }).catch(err => console.log(err))
   }
+
 
   handleView = (view, data)=>{
     let formInputs = {
@@ -145,7 +146,7 @@ class App extends React.Component{
           (this.state.view === 'list')
           ? <>
           <h2>Add a New Job Listing</h2>
-          <Form handleUpdate={this.handleCreate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+          <Form handleCreate={this.handleCreate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
           </>
           : <>
           <h2>Edit Job Listing</h2>

@@ -46,7 +46,7 @@ class Form extends React.Component {
             <input type='text' value={this.state.position} id='position' onChange={this.handleChange}/>
             <label htmlFor='positionURL'>URL</label>
             <input type='text' value={this.state.positionURL} id='positionURL' onChange={this.handleChange}/>
-            <label htmlFor='notes'>Info</label>
+            <label htmlFor='notes'>Notes</label>
             <input type='text' value={this.state.notes} id='notes' onChange={this.handleChange}/>
 
             {
