@@ -34,7 +34,7 @@ class Listing{
 
 class Listings{
   static function create($listing){
-    $query = "INSERT INTO listings (company, position, positionURL, notes) VALUES ($1, $2, $3, $4)";
+    $query = "INSERT INTO listings (company, position, positionurl, notes) VALUES ($1, $2, $3, $4)";
     $query_params = array($listing->company, $listing->position, $listing->positionURL, $listing->notes);
     pg_query_params($query, $query_params);
 
@@ -42,7 +42,7 @@ class Listings{
   }
 
   static function update($updated_listing){
-    $query = "UPDATE listings SET company = $1, position = $2, positionURL = $3, notes = $4 WHERE id = $5";
+    $query = "UPDATE listings SET company = $1, position = $2, positionurl = $3, notes = $4 WHERE id = $5";
     $query_params = array($updated_listing->company, $updated_listing->position, $updated_listing->positionURL, $updated_listing->notes, $updated_listing->id);
     pg_query_params($query, $query_params);
 
@@ -62,35 +62,21 @@ class Listings{
 
     $results = pg_query("SELECT * FROM listings");
 
-    $this->id = $id;
-    $this->listingDate = $listingDate;
-    $this->company = $company;
-    $this->position = $position;
-    $this->positionURL = $positionURL;
-    $this->notes = $notes;
-    $this->status = $status;
-    $this->applyDate = $applyDate;
-    $this->applyFdate = $applyFdate;
-    $this->interviewDate = $interviewDate;
-    $this->interviewFdate = $interviewFdate;
-    $this->tryAgainDate = $tryAgainDate;
-
-
     $row_object = pg_fetch_object($results);
     while ($row_object) {
       $new_listing = new Listing(
         intval($row_object->id),
-        date("m-d-Y", strtotime($row_object->listingDate)),
+        date("m-d-Y", strtotime($row_object->listingdate)),
         $row_object->company,
         $row_object->position,
-        $row_object->positionURL,
+        $row_object->positionurl,
         $row_object->notes,
         $row_object->status,
-        date("m-d-Y", strtotime($row_object->applyDate)),
-        date("m-d-Y", strtotime($row_object->applyFdate)),
-        date("m-d-Y", strtotime($row_object->interviewDate)),
-        date("m-d-Y", strtotime($row_object->interviewFdate)),
-        date("m-d-Y", strtotime($row_object->tryAgainDate))
+        date("m-d-Y", strtotime($row_object->applydate)),
+        date("m-d-Y", strtotime($row_object->applyfdate)),
+        date("m-d-Y", strtotime($row_object->interviewdate)),
+        date("m-d-Y", strtotime($row_object->interviewfdate)),
+        date("m-d-Y", strtotime($row_object->tryagaindate))
       );
       $listings[] = $new_listing;
 
