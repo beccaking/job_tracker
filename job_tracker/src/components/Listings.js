@@ -22,7 +22,7 @@ class Listings extends React.Component{
               <p>{job.notes}</p>
               <button onClick={()=>{this.props.handleView('form', job)}}>Edit</button>
               <button onClick={()=>{this.props.handleDelete(job.id)}}>Delete</button>
-              <button>Applied</button>
+              <button onClick={()=>{this.props.handleView("applied", job)}}>Applied</button>
             </div>
           ))
         }

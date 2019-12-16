@@ -12,11 +12,10 @@ class Applied extends React.Component{
             <div key={job.id} className='job'>
               <h4>Date created: {job.listingDate}</h4>
               <h4>Company: {job.company}</h4>
-              <a href={job.positionURL}>{job.positionURL}</a>
-              <h4>Position: {job.position}</h4>
+              <a href={job.positionURL}>Position: {job.position}</a>
               <h4>Notes:</h4>
               <p>{job.notes}</p>
-              <button onClick={()=>{this.showForm(job)}}>Edit</button>
+              <button onClick={()=>{this.props.handleView('form', job)}}>Edit</button>
               <button onClick={()=>{this.props.handleDelete(job.id)}}>Delete</button>
               <button onClick={()=>{this.props.handleStatusChange(job.id, 'interview')}}>Have Interview</button>
             </div>

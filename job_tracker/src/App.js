@@ -112,6 +112,16 @@ class App extends React.Component{
         id: data.id
       }
       break
+      case 'applied':
+      formInputs = {
+        company: data.company,
+        position: data.position,
+        positionURL: data.positionURL,
+        notes: data.notes,
+        status: "applied",
+        id: data.id
+      }
+      break
       default:
       break
     }
@@ -121,6 +131,11 @@ class App extends React.Component{
       formInputs: formInputs
     })
   }
+
+  // handleStatus = (view, data) => {
+  //   this.setState({view: view});
+  //   this.handleUpdate(data);
+  // }
 
 
   // Run fetchListings only once after page loads
@@ -140,21 +155,21 @@ class App extends React.Component{
 
         <div className='addForm'>
         {
-          (this.state.view === 'list')
+          (this.state.view === 'form')
           ? <>
-          <h2>Add a New Job Listing</h2>
-          <CreateForm handleCreate={this.handleCreate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
-          </>
-          : <>
           <h2>Edit Job Listing</h2>
           <Form handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+          </>
+          : <>
+          <h2>Add a New Job Listing</h2>
+          <CreateForm handleCreate={this.handleCreate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
           </>
 
         }
         </div>
 
         <div className='box-container'>
-            <Listings handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
+            <Listings handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
             <Applied jobs={this.state.jobs}/>
             <Interview jobs={this.state.jobs}/>
             <TryAgain jobs={this.state.jobs}/>
