@@ -5,14 +5,19 @@ import Interview from './components/Interview.js'
 import TryAgain from './components/TryAgain.js'
 import Form from './components/Form.js'
 import CreateForm from './components/CreateForm.js'
+import AppliedForm from './components/AppliedForm.js'
+import InterviewForm from './components/InterviewForm.js'
+
 
 // Set URL for database
-let baseUrl = 'https://job-tracker-phpreact.herokuapp.com/api';
+let baseUrl = 'http://job-tracker-phpreact.herokuapp.com/api';
 // if (process.env.NODE_ENV === 'development') {
 //   baseUrl = 'http://localhost:8888'
 // } else {
 //   baseUrl = "https://job-tracker-phpreact.herokuapp.com/api"
 // }
+
+// let baseUrl = 'http://localhost:8888';
 
 
 class App extends React.Component{
@@ -104,6 +109,8 @@ class App extends React.Component{
       case 'list':
       break
       case 'form':
+      case 'applied':
+      case 'interview':
       formInputs = {
         company: data.company,
         position: data.position,
@@ -119,8 +126,12 @@ class App extends React.Component{
     this.setState({
       view: view,
       formInputs: formInputs
+    }, () => {
+      console.log(this.state);
     })
   }
+
+
 
 
   // Run fetchListings only once after page loads
@@ -139,24 +150,41 @@ class App extends React.Component{
         </header>
 
         <div className='addForm'>
-        {
-          (this.state.view === 'list')
-          ? <>
-          <h2>Add a New Job Listing</h2>
-          <CreateForm handleCreate={this.handleCreate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
-          </>
-          : <>
-          <h2>Edit Job Listing</h2>
-          <Form handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
-          </>
 
-        }
+          {
+            (this.state.view === 'list')
+            ?
+            <CreateForm handleCreate={this.handleCreate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+            : null
+          }
+
+          {
+            (this.state.view === 'form')
+            ?
+            <Form handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+            : null
+          }
+
+          {
+            (this.state.view === 'applied')
+            ?
+            <AppliedForm handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+            : null
+          }
+
+          {
+            (this.state.view === 'interview')
+            ?
+            <InterviewForm handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+            : null
+          }
+
         </div>
 
         <div className='box-container'>
-            <Listings handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
-            <Applied jobs={this.state.jobs}/>
-            <Interview jobs={this.state.jobs}/>
+            <Listings handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
+            <Applied handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs}/>
+            <Interview handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs}/>
             <TryAgain jobs={this.state.jobs}/>
         </div>
       </div>

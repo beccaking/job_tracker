@@ -8,7 +8,7 @@ class Form extends React.Component {
       position: '',
       positionURL: '',
       notes: '',
-      status: "new"
+      status: "interview"
     }
   }
 
@@ -20,11 +20,7 @@ class Form extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    if(this.props.view === 'list') {
-      this.props.handleCreate(this.state)
-    } else if(this.props.view === 'form') {
-      this.props.handleUpdate(this.state)
-    }
+    this.props.handleUpdate(this.state)
   }
 
 
@@ -44,17 +40,13 @@ class Form extends React.Component {
   render(){
     return(
         <div className='editform'>
-          <h2>Edit Job Listing</h2>
-          
+          <h2>Interview Job Listing</h2>
+          <h4>Company: {this.props.formInputs.company}</h4>
+          <h4>Position: {this.props.formInputs.position}</h4>
+          <h4>Notes:</h4>
+
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor='company'>Company</label>
-            <input type='text' value={this.state.company} id='company' onChange={this.handleChange}/>
-            <label htmlFor='position'>Position</label>
-            <input type='text' value={this.state.position} id='position' onChange={this.handleChange}/>
-            <label htmlFor='positionURL'>URL</label>
-            <input type='text' value={this.state.positionURL} id='positionURL' onChange={this.handleChange}/>
-            <label htmlFor='notes'>Notes</label>
-            <input type='text' value={this.state.notes} id='notes' onChange={this.handleChange}/>
+            <textarea rows="4" cols="50" value={this.state.notes} id='notes' onChange={this.handleChange}></textarea>
             <input type='submit' value="Edit"/>
             <button onClick={()=>{this.props.handleView('list')}}>Cancel</button>
           </form>

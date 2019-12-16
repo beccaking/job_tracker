@@ -1,24 +1,49 @@
 import React from 'react';
 
 class Applied extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      company: '',
+      position: '',
+      positionURL: '',
+      notes: ''
+    }
+  }
+
+
+  handleStatus = (data) => {
+    this.setState({
+      company: data.company,
+      position: data.position,
+      positionURL: data.positionURL,
+      notes: data.notes,
+      status: "interview",
+      id: data.id
+    }, () => {
+      this.props.handleUpdate(this.state);
+    })
+  }
+
+
   render(){
-    const appliedjobs = this.props.jobs.filter(job => job.status === 'applied')
+    let appliedJobs = this.props.jobs.filter(job => job.status === 'applied');
+
     return(
       <div className='column-applied'>
-        <h3>Applied ({appliedjobs.length})</h3>
+        <h3>Applied ({appliedJobs.length})</h3>
         <div className='box'>
         {
-          appliedjobs.map((job) => (
+          appliedJobs.map((job) => (
             <div key={job.id} className='job'>
               <h4>Date created: {job.listingDate}</h4>
               <h4>Company: {job.company}</h4>
-              <a href={job.positionURL}>{job.positionURL}</a>
-              <h4>Position: {job.position}</h4>
+              <a href={job.positionURL}>Position: {job.position}</a>
               <h4>Notes:</h4>
-              <p>{job.notes}</p>
-              <button onClick={()=>{this.showForm(job)}}>Edit</button>
+              <textarea readOnly value={job.notes} /><br/>
+              <button onClick={()=>{this.props.handleView('applied', job)}}>Edit</button>
               <button onClick={()=>{this.props.handleDelete(job.id)}}>Delete</button>
-              <button onClick={()=>{this.props.handleStatusChange(job.id, 'interview')}}>Have Interview</button>
+              <button onClick={()=>{this.handleStatus(job)}}>Have Interview</button>
             </div>
           ))
         }

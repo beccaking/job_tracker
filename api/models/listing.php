@@ -44,8 +44,8 @@ class Listings{
   }
 
   static function update($updated_listing){
-    $query = "UPDATE listings SET company = $1, position = $2, positionurl = $3, notes = $4 WHERE id = $5";
-    $query_params = array($updated_listing->company, $updated_listing->position, $updated_listing->positionURL, $updated_listing->notes, $updated_listing->id);
+    $query = "UPDATE listings SET company = $1, position = $2, positionurl = $3, notes = $4, status = $5 WHERE id = $6";
+    $query_params = array($updated_listing->company, $updated_listing->position, $updated_listing->positionURL, $updated_listing->notes, $updated_listing->status, $updated_listing->id);
     pg_query_params($query, $query_params);
 
     return self::all();
@@ -62,7 +62,7 @@ class Listings{
   static function all(){
     $listings = array();
 
-    $results = pg_query("SELECT * FROM listings");
+    $results = pg_query("SELECT * FROM listings ORDER BY listings.id");
 
     $row_object = pg_fetch_object($results);
     while ($row_object) {
