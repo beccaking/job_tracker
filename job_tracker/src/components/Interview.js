@@ -18,7 +18,7 @@ class Interview extends React.Component{
               <p>{job.notes}</p>
               <button onClick={()=>{this.showForm(job)}}>Edit</button>
               <button onClick={()=>{this.props.handleDelete(job.id)}}>Delete</button>
-              <button onClick={()=>{this.props.handleStatusChange(job.id, 'tryagain')}}>Rejection</button>
+              <button onClick={()=>{this.props.handleUpdate(job)}}>Rejection</button>
             </div>
           ))
         }
