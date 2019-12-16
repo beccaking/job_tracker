@@ -7,7 +7,8 @@ class Form extends React.Component {
       company: '',
       position: '',
       positionURL: '',
-      notes: ''
+      notes: '',
+      status: "new"
     }
   }
 
@@ -43,6 +44,8 @@ class Form extends React.Component {
   render(){
     return(
         <div className='editform'>
+          <h2>Edit Job Listing</h2>
+          
           <form onSubmit={this.handleSubmit}>
             <label htmlFor='company'>Company</label>
             <input type='text' value={this.state.company} id='company' onChange={this.handleChange}/>

@@ -1,14 +1,16 @@
 import React from 'react';
 
 class Applied extends React.Component{
+
   render(){
-    const appliedjobs = this.props.jobs.filter(job => job.status === 'applied')
+    let appliedJobs = this.props.jobs.filter(job => job.status === 'applied');
+
     return(
       <div className='column-applied'>
-        <h3>Applied ({appliedjobs.length})</h3>
+        <h3>Applied ({appliedJobs.length})</h3>
         <div className='box'>
         {
-          appliedjobs.map((job) => (
+          appliedJobs.map((job) => (
             <div key={job.id} className='job'>
               <h4>Date created: {job.listingDate}</h4>
               <h4>Company: {job.company}</h4>
