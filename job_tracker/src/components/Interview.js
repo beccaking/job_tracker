@@ -1,6 +1,21 @@
 import React from 'react';
 
 class Interview extends React.Component{
+  constructor(){
+    super()
+    this.state = {
+      status: ''
+    }
+  }
+  handleStatusChange = (event) => {
+    this.setState({
+      [event.target.id]: event.target.value
+    })
+    this.setState({
+      status: 'tryagain'
+    })
+    this.props.handleUpdate(this.state)
+  }
   render(){
     const interviews = this.props.jobs.filter(job => job.status === 'interview')
     return(
@@ -18,7 +33,7 @@ class Interview extends React.Component{
               <p>{job.notes}</p>
               <button onClick={()=>{this.showForm(job)}}>Edit</button>
               <button onClick={()=>{this.props.handleDelete(job.id)}}>Delete</button>
-              <button onClick={()=>{this.props.handleStatusChange(job.id, 'tryagain')}}>Rejection</button>
+              <button onClick={()=>{this.handleStatusChange()}}>Rejection</button>
             </div>
           ))
         }
