@@ -1,5 +1,13 @@
 *{
   margin: 10px 5px;
+  font-family: 'Roboto Slab', serif;
+  background: #ffffe6;
+}
+
+img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 header {
@@ -10,7 +18,19 @@ h3{
   text-align: center;
 }
 
+button:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
 
+.addbutton:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+#company, #position, #positionURL, #notes {
+  background: white;
+}
 
 .addForm {
   /* width: 1207px; */
@@ -23,8 +43,8 @@ h3{
 }
 
 .box {
-  /* width: 300px; */
   border: 1px solid black;
+  background: black;
 }
 
 .column-listings, .column-applied, .column-interview, .column-tryagain{
@@ -33,29 +53,12 @@ h3{
 
 .box-container {
   display: flex;
-
-  /* flex-direction: row;
-  width: 1207px; */
   justify-content: space-around;
   margin: 10px auto;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.more {
   border: 1px solid black;
-
-/*   flex-direction: row;
-  width: 1207px;
-  margin: 0 auto; */
-
-}
-
-body {
-  margin: 10px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
