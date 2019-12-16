@@ -37,7 +37,7 @@ class Listing{
 class Listings{
   static function create($listing){
     $query = "INSERT INTO listings (company, position, positionurl, notes, listingDate) VALUES ($1, $2, $3, $4, $5)";
-    $query_params = array($listing->company, $listing->position, $listing->positionURL, $listing->notes, date("m-d-Y"));
+    $query_params = array($listing->company, $listing->position, $listing->positionURL, $listing->notes, $listing->listingDate);
     pg_query_params($query, $query_params);
 
     return self::all();
@@ -62,7 +62,7 @@ class Listings{
   static function all(){
     $listings = array();
 
-    $results = pg_query("SELECT * FROM listings ORDER BY listings.id");
+    $results = pg_query("SELECT * FROM listings ORDER BY listings.listingDate");
 
     $row_object = pg_fetch_object($results);
     while ($row_object) {
