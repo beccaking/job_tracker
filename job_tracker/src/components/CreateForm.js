@@ -45,7 +45,7 @@ class Form extends React.Component {
             <input type='text' value={this.state.positionURL} id='positionURL' onChange={this.handleChange}/>
             <label htmlFor='notes'>Notes</label>
             <input type='text' value={this.state.notes} id='notes' onChange={this.handleChange}/>
-            <input type='submit' value="Add"/>
+            <input className='addbutton' type='submit' value="Add"/>
           </form>
         </div>
     )
