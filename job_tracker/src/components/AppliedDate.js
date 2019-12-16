@@ -40,7 +40,7 @@ class Form extends React.Component {
 
   render(){
     return(
-        <div className='editform'>
+        <div className='modal'>
           <h2>Applied Date</h2>
           <h4>Company: {this.props.formInputs.company}</h4>
           <h4>Position: {this.props.formInputs.position}</h4>
@@ -51,7 +51,10 @@ class Form extends React.Component {
               <input type='date' value={this.state.applyDate} id='applyDate' onChange={this.handleChange}/>
 
             <input type='submit' value="Submit"/>
-            <button onClick={()=>{this.props.handleView('list')}}>Cancel</button>
+            {/*
+              <button onClick={()=>{this.props.handleView('list')}}>Cancel</button>
+              */}
+
           </form>
         </div>
     )
