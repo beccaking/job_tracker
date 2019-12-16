@@ -5,6 +5,7 @@ import Interview from './components/Interview.js'
 import TryAgain from './components/TryAgain.js'
 import Form from './components/Form.js'
 import CreateForm from './components/CreateForm.js'
+import AppliedForm from './components/AppliedForm.js'
 
 // Set URL for database
 let baseUrl = 'http://localhost:8888';
@@ -112,16 +113,15 @@ class App extends React.Component{
         id: data.id
       }
       break
-      // case 'applied':
-      // formInputs = {
-      //   company: data.company,
-      //   position: data.position,
-      //   positionURL: data.positionURL,
-      //   notes: data.notes,
-      //   status: "applied",
-      //   id: data.id
-      // }
-      // break
+      case 'applied':
+      formInputs = {
+        company: data.company,
+        position: data.position,
+        positionURL: data.positionURL,
+        notes: data.notes,
+        id: data.id
+      }
+      break
       default:
       break
     }
@@ -153,18 +153,35 @@ class App extends React.Component{
         </header>
 
         <div className='addForm'>
-        {
-          (this.state.view === 'form')
-          ?
-          <Form handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
-          :
-          <CreateForm handleCreate={this.handleCreate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
-        }
+
+          {
+            (this.state.view === 'list')
+            ?
+            <CreateForm handleCreate={this.handleCreate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+            : null
+          }
+
+          {
+            (this.state.view === 'form')
+            ?
+            <Form handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+            : null
+          }
+
+          {
+            (this.state.view === 'applied')
+            ?
+            <AppliedForm handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+            : null
+          }
+
+
+
         </div>
 
         <div className='box-container'>
             <Listings handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
-            <Applied handleDelete={this.handleDelete} jobs={this.state.jobs}/>
+            <Applied handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs}/>
             <Interview jobs={this.state.jobs}/>
             <TryAgain jobs={this.state.jobs}/>
         </div>

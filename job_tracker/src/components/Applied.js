@@ -16,8 +16,8 @@ class Applied extends React.Component{
               <h4>Company: {job.company}</h4>
               <a href={job.positionURL}>Position: {job.position}</a>
               <h4>Notes:</h4>
-              <p>{job.notes}</p>
-              <button onClick={()=>{this.props.handleView('form', job)}}>Edit</button>
+              <textarea readOnly value={job.notes} /><br/>
+              <button onClick={()=>{this.props.handleView('applied', job)}}>Edit</button>
               <button onClick={()=>{this.props.handleDelete(job.id)}}>Delete</button>
               <button onClick={()=>{this.props.handleStatusChange(job.id, 'interview')}}>Have Interview</button>
             </div>
