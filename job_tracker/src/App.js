@@ -7,12 +7,12 @@ import Form from './components/Form.js'
 import CreateForm from './components/CreateForm.js'
 
 // Set URL for database
-let baseUrl = '';
-if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'http://localhost:8888'
-} else {
-  baseUrl = "https://job-tracker-phpreact.herokuapp.com/"
-}
+let baseUrl = 'https://job-tracker-phpreact.herokuapp.com/';
+// if (process.env.NODE_ENV === 'development') {
+//   baseUrl = 'http://localhost:8888'
+// } else {
+//   baseUrl = "https://job-tracker-phpreact.herokuapp.com/"
+// }
 
 
 class App extends React.Component{
@@ -133,6 +133,7 @@ class App extends React.Component{
 
 
   render(){
+    console.log(baseUrl)
     return(
       <div className='container'>
         <header>
