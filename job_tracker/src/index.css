@@ -1,7 +1,10 @@
 *{
   margin: 10px 5px;
   font-family: 'Roboto Slab', serif;
-  background: #ffffe6;
+}
+
+body{
+  background-color: #ffffe6;
 }
 
 img {
@@ -40,11 +43,22 @@ button:hover {
 .job {
   border: 1px solid black;
   margin: 10px;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px grey;
+}
+
+.job:hover{
+  background-color: #ddd;
+  box-shadow: 10px 5px 5px grey;
+  color: #735066;
+  font-weight: bolder;
+  transform: translateY(-0.7em);
 }
 
 .box {
-  border: 1px solid black;
-  background: black;
+  /* border: 1px solid black; */
+  /* background: black; */
+
 }
 
 .column-listings, .column-applied, .column-interview, .column-tryagain{

@@ -7,6 +7,7 @@ import Form from './components/Form.js'
 import CreateForm from './components/CreateForm.js'
 import AppliedForm from './components/AppliedForm.js'
 import InterviewForm from './components/InterviewForm.js'
+import AppliedDate from './components/AppliedDate.js'
 
 
 // Set URL for database
@@ -105,10 +106,12 @@ class App extends React.Component{
 
     switch(view){
       case 'list':
+
       break
       case 'form':
       case 'applied':
       case 'interview':
+      case 'appliedDate':
       formInputs = {
         company: data.company,
         position: data.position,
@@ -160,6 +163,13 @@ class App extends React.Component{
             (this.state.view === 'form')
             ?
             <Form handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+            : null
+          }
+
+          {
+            (this.state.view === 'appliedDate')
+            ?
+            <AppliedDate handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
             : null
           }
 

@@ -37,6 +37,7 @@ class Applied extends React.Component{
           appliedJobs.map((job) => (
             <div key={job.id} className='job'>
               <h4>Date created: {job.listingDate}</h4>
+              <h4>Date applied: {job.applyDate}</h4>
               <h4>Company: {job.company}</h4>
               <a href={job.positionURL}>Position: {job.position}</a>
               <h4>Notes:</h4>

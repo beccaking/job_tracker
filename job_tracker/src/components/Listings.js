@@ -22,6 +22,11 @@ class Listings extends React.Component{
       id: data.id
     }, () => {
       this.props.handleUpdate(this.state);
+      setTimeout(() => {
+        this.props.handleView('appliedDate', data);
+      }, 2000);
+      // this.props.handleView('appliedDate');
+
     })
   }
 
