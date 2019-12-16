@@ -2,9 +2,11 @@ import React from 'react';
 
 class Listings extends React.Component{
 
-  showForm(job){
-    this.props.handleView('form', job)
-  }
+  // showForm(job){
+  //   this.props.handleView('form', job)
+  // }
+
+
   render(){
     return(
       <div className='column-listings'>
@@ -18,7 +20,7 @@ class Listings extends React.Component{
               <a href={job.positionURL}>Position: {job.position}</a>
               <h4>Notes:</h4>
               <p>{job.notes}</p>
-              <button onClick={()=>{this.showForm(job)}}>Edit</button>
+              <button onClick={()=>{this.props.handleView('form', job)}}>Edit</button>
               <button onClick={()=>{this.props.handleDelete(job.id)}}>Delete</button>
               <button>Applied</button>
             </div>
