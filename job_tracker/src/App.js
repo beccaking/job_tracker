@@ -10,12 +10,14 @@ import InterviewForm from './components/InterviewForm.js'
 
 
 // Set URL for database
-let baseUrl = 'http://localhost:8888';
+let baseUrl = 'http://job-tracker-phpreact.herokuapp.com/api';
 // if (process.env.NODE_ENV === 'development') {
 //   baseUrl = 'http://localhost:8888'
 // } else {
 //   baseUrl = "https://job-tracker-phpreact.herokuapp.com/api"
 // }
+
+// let baseUrl = 'http://localhost:8888';
 
 
 class App extends React.Component{
