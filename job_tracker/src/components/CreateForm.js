@@ -33,17 +33,6 @@ class Form extends React.Component {
   }
 
 
-
-  // componentDidMount(){
-  //   this.setState({
-  //     company: this.props.formInputs.company,
-  //     position: this.props.formInputs.position,
-  //     positionURL: this.props.formInputs.positionURL,
-  //     notes: this.props.formInputs.notes
-  //   })
-  // }
-
-
   render(){
     return(
         <div className='createform'>

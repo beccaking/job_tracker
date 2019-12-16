@@ -7,14 +7,12 @@ import Form from './components/Form.js'
 import CreateForm from './components/CreateForm.js'
 
 // Set URL for database
-// let baseUrl = 'https://job-tracker-phpreact.herokuapp.com/api';
-
-let baseUrl = '';
-if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'http://localhost:8888'
-} else {
-  baseUrl = "https://job-tracker-phpreact.herokuapp.com/"
-}
+let baseUrl = 'http://localhost:8888';
+// if (process.env.NODE_ENV === 'development') {
+//   baseUrl = 'http://localhost:8888'
+// } else {
+//   baseUrl = "https://job-tracker-phpreact.herokuapp.com/api"
+// }
 
 
 class App extends React.Component{
@@ -32,7 +30,6 @@ class App extends React.Component{
     }
   }
 
-
   fetchJobs = () => {
     // console.log('get all jobs')
     fetch(`${baseUrl}/listings`)
@@ -46,7 +43,6 @@ class App extends React.Component{
   handleChange = (event) => {
     this.setState({[event.target.id]: event.target.value})
   }
-
 
   handleCreate = (createData) => {
     fetch(`${baseUrl}/listings`, {
