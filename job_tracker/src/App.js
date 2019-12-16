@@ -6,6 +6,8 @@ import TryAgain from './components/TryAgain.js'
 import Form from './components/Form.js'
 import CreateForm from './components/CreateForm.js'
 import AppliedForm from './components/AppliedForm.js'
+import InterviewForm from './components/InterviewForm.js'
+
 
 // Set URL for database
 let baseUrl = 'http://localhost:8888';
@@ -105,15 +107,8 @@ class App extends React.Component{
       case 'list':
       break
       case 'form':
-      formInputs = {
-        company: data.company,
-        position: data.position,
-        positionURL: data.positionURL,
-        notes: data.notes,
-        id: data.id
-      }
-      break
       case 'applied':
+      case 'interview':
       formInputs = {
         company: data.company,
         position: data.position,
@@ -175,14 +170,19 @@ class App extends React.Component{
             : null
           }
 
-
+          {
+            (this.state.view === 'interview')
+            ?
+            <InterviewForm handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+            : null
+          }
 
         </div>
 
         <div className='box-container'>
             <Listings handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
-            <Applied handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs}/>
-            <Interview jobs={this.state.jobs}/>
+            <Applied handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs}/>
+            <Interview handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs}/>
             <TryAgain jobs={this.state.jobs}/>
         </div>
       </div>
