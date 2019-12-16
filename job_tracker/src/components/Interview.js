@@ -31,7 +31,6 @@ class Interview extends React.Component{
               <h4>Position: {job.position}</h4>
               <h4>Notes:</h4>
               <p>{job.notes}</p>
-              <button onClick={()=>{this.showForm(job)}}>Edit</button>
               <button onClick={()=>{this.props.handleDelete(job.id)}}>Delete</button>
               <button onClick={()=>{this.handleStatusChange()}}>Rejection</button>
             </div>
