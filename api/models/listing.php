@@ -62,7 +62,7 @@ class Listings{
   static function all(){
     $listings = array();
 
-    $results = pg_query("SELECT * FROM listings");
+    $results = pg_query("SELECT * FROM listings ORDER BY listings.id");
 
     $row_object = pg_fetch_object($results);
     while ($row_object) {
