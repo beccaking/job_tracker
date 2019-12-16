@@ -10,7 +10,7 @@ let baseUrl = '';
 if (process.env.NODE_ENV === 'development') {
   baseUrl = 'http://localhost:8888'
 } else {
-  baseUrl = "https://job-tracker-phpreact.herokuapp.com/"
+  baseUrl = "https://job-tracker-phpreact.herokuapp.com/api"
 }
 
 
