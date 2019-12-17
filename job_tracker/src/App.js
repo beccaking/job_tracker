@@ -118,7 +118,7 @@ class App extends React.Component{
         position: data.position,
         positionURL: data.positionURL,
         notes: data.notes,
-        applydate: data.applyDate,
+        applyDate: data.applyDate,
         interviewDate: data.interviewDate,
         id: data.id
       }
@@ -196,7 +196,7 @@ class App extends React.Component{
             <Listings handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
             <Applied handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs}/>
             <Interview handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs}/>
-            <TryAgain jobs={this.state.jobs}/>
+            <TryAgain handleDelete={this.handleDelete} jobs={this.state.jobs}/>
         </div>
       </div>
     )

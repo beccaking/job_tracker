@@ -18,11 +18,15 @@ class Interview extends React.Component{
       position: data.position,
       positionURL: data.positionURL,
       notes: data.notes,
+      applyDate: data.applyDate,
+      interviewDate: data.interviewDate,
       status: "rejected",
       id: data.id
     }, () => {
       this.props.handleUpdate(this.state);
     })
+
+
   }
 
 
