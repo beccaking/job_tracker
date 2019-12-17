@@ -7,7 +7,9 @@ class Form extends React.Component {
       company: '',
       position: '',
       positionURL: '',
-      notes: ''
+      notes: '',
+      listingDate: new Date()
+      // listingDate: new Date(new Date().setDate(new Date().getDate()-10))
     }
   }
 
@@ -19,17 +21,13 @@ class Form extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    if(this.props.view === 'list') {
-      this.props.handleCreate(this.state);
-      this.setState({
-        company: '',
-        position: '',
-        positionURL: '',
-        notes: ''
-      })
-    } else if(this.props.view === 'form') {
-      this.props.handleUpdate(this.state)
-    }
+    this.props.handleCreate(this.state);
+    this.setState({
+      company: '',
+      position: '',
+      positionURL: '',
+      notes: ''
+    })
   }
 
 
@@ -37,7 +35,7 @@ class Form extends React.Component {
     return(
         <div className='createform'>
           <h2>Add a New Job Listing</h2>
-          
+
           <form onSubmit={this.handleSubmit}>
             <label htmlFor='company'>Company</label>
             <input type='text' value={this.state.company} id='company' onChange={this.handleChange}/>

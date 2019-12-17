@@ -12,27 +12,8 @@ class Listings extends React.Component{
   }
 
 
-  handleStatus = (data) => {
-    this.setState({
-      company: data.company,
-      position: data.position,
-      positionURL: data.positionURL,
-      notes: data.notes,
-      status: "applied",
-      id: data.id
-    }, () => {
-      this.props.handleUpdate(this.state);
-    })
-  }
-
-  // showForm(job){
-  //   this.props.handleView('form', job)
-  // }
-
-
   render(){
     let newJobs = this.props.jobs.filter(job => job.status === 'new');
-    // let newJobs = this.props.jobs;
 
     return(
       <div className='column-listings'>
@@ -43,12 +24,12 @@ class Listings extends React.Component{
             <div key={job.id} className='job'>
               <h4>Date created: {job.listingDate}</h4>
               <h4>Company: {job.company}</h4>
-              <a href={job.positionURL}>Position: {job.position}</a>
+                <h4>Position: <a href={job.positionURL}>{job.position}</a></h4>
               <h4>Notes:</h4>
               <textarea readOnly value={job.notes} /><br/>
               <button onClick={()=>{this.props.handleView('form', job)}}>Edit</button>
               <button onClick={()=>{this.props.handleDelete(job.id)}}>Delete</button>
-              <button onClick={()=>{this.handleStatus(job)}}>Applied</button>
+              <button onClick={()=>{this.props.handleView('appliedDate', job)}}>Applied</button>
             </div>
           ))
         }

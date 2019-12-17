@@ -37,15 +37,15 @@ class Listing{
 class Listings{
   static function create($listing){
     $query = "INSERT INTO listings (company, position, positionurl, notes, listingDate) VALUES ($1, $2, $3, $4, $5)";
-    $query_params = array($listing->company, $listing->position, $listing->positionURL, $listing->notes, date("m-d-Y"));
+    $query_params = array($listing->company, $listing->position, $listing->positionURL, $listing->notes, $listing->listingDate);
     pg_query_params($query, $query_params);
 
     return self::all();
   }
 
   static function update($updated_listing){
-    $query = "UPDATE listings SET company = $1, position = $2, positionurl = $3, notes = $4, status = $5 WHERE id = $6";
-    $query_params = array($updated_listing->company, $updated_listing->position, $updated_listing->positionURL, $updated_listing->notes, $updated_listing->status, $updated_listing->id);
+    $query = "UPDATE listings SET company = $1, position = $2, positionurl = $3, notes = $4, status = $5, applyDate = $6, interviewDate = $7, tryAgainDate = $8 WHERE id = $9";
+    $query_params = array($updated_listing->company, $updated_listing->position, $updated_listing->positionURL, $updated_listing->notes, $updated_listing->status, $updated_listing->applyDate, $updated_listing->interviewDate, $updated_listing->tryAgainDate, $updated_listing->id);
     pg_query_params($query, $query_params);
 
     return self::all();
@@ -62,7 +62,7 @@ class Listings{
   static function all(){
     $listings = array();
 
-    $results = pg_query("SELECT * FROM listings ORDER BY listings.id");
+    $results = pg_query("SELECT * FROM listings ORDER BY listings.listingDate");
 
     $row_object = pg_fetch_object($results);
     while ($row_object) {

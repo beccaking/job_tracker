@@ -7,6 +7,7 @@ import Form from './components/Form.js'
 import CreateForm from './components/CreateForm.js'
 import AppliedForm from './components/AppliedForm.js'
 import InterviewForm from './components/InterviewForm.js'
+import AppliedDate from './components/AppliedDate.js'
 
 
 // Set URL for database
@@ -107,15 +108,20 @@ class App extends React.Component{
 
     switch(view){
       case 'list':
+
       break
       case 'form':
       case 'applied':
       case 'interview':
+      case 'appliedDate':
+      case 'interviewDate':
       formInputs = {
         company: data.company,
         position: data.position,
         positionURL: data.positionURL,
         notes: data.notes,
+        applyDate: data.applyDate,
+        interviewDate: data.interviewDate,
         id: data.id
       }
       break
@@ -166,6 +172,13 @@ class App extends React.Component{
           }
 
           {
+            (this.state.view === 'appliedDate'||this.state.view ==='interviewDate')
+            ?
+            <AppliedDate handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
+            : null
+          }
+
+          {
             (this.state.view === 'applied')
             ?
             <AppliedForm handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
@@ -185,7 +198,7 @@ class App extends React.Component{
             <Listings handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs} formInputs={this.state.formInputs}/>
             <Applied handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs}/>
             <Interview handleUpdate={this.handleUpdate} handleDelete={this.handleDelete} handleView={this.handleView} jobs={this.state.jobs}/>
-            <TryAgain jobs={this.state.jobs}/>
+            <TryAgain handleDelete={this.handleDelete} jobs={this.state.jobs}/>
         </div>
       </div>
     )
