@@ -22,10 +22,17 @@ class Applied extends React.Component{
       status: "interview",
       id: data.id
     }, () => {
-      this.props.handleUpdate(this.state);
-      setTimeout(() => {
-        this.props.handleView('interviewDate', data);
-      }, 2000);
+      // this.props.handleUpdate(this.state);
+      // setTimeout(() => {
+      //   this.props.handleView('interviewDate', data);
+      // }, 2000);
+
+      this.props.handleView('interviewDate', data, () => {
+        this.props.handleUpdate(this.state);
+      })
+
+
+
     })
   }
 

@@ -21,11 +21,17 @@ class Listings extends React.Component{
       status: "applied",
       id: data.id
     }, () => {
-      this.props.handleUpdate(this.state);
-      setTimeout(() => {
-        console.log("running set Time out");
-        this.props.handleView('appliedDate', data);
-      }, 2000);
+      // this.props.handleUpdate(this.state);
+      // setTimeout(() => {
+      //   console.log("running set Time out");
+      //   this.props.handleView('appliedDate', data);
+      // }, 2000);
+
+      this.props.handleView('appliedDate', data, () => {
+        this.props.handleUpdate(this.state);
+      })
+
+
     })
   }
 
