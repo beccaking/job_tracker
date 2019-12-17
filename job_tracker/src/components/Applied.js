@@ -13,27 +13,29 @@ class Applied extends React.Component{
 
 
   handleStatus = (data) => {
-    this.setState({
-      company: data.company,
-      position: data.position,
-      positionURL: data.positionURL,
-      notes: data.notes,
-      applyDate: data.applyDate,
-      status: "interview",
-      id: data.id
-    }, () => {
-      // this.props.handleUpdate(this.state);
-      // setTimeout(() => {
-      //   this.props.handleView('interviewDate', data);
-      // }, 2000);
+    // this.setState({
+    //   company: data.company,
+    //   position: data.position,
+    //   positionURL: data.positionURL,
+    //   notes: data.notes,
+    //   applyDate: data.applyDate,
+    //   status: "interview",
+    //   id: data.id
+    // }, () => {
+    //   // this.props.handleUpdate(this.state);
+    //   // setTimeout(() => {
+    //   //   this.props.handleView('interviewDate', data);
+    //   // }, 2000);
+    //
+    //   this.props.handleView('interviewDate', data, () => {
+    //     this.props.handleUpdate(this.state);
+    //   })
+    //
+    //
+    //
+    // })
 
-      this.props.handleView('interviewDate', data, () => {
-        this.props.handleUpdate(this.state);
-      })
-
-
-
-    })
+    this.props.handleView('interviewDate', data);
   }
 
 

@@ -13,26 +13,29 @@ class Listings extends React.Component{
 
 
   handleStatus = (data) => {
-    this.setState({
-      company: data.company,
-      position: data.position,
-      positionURL: data.positionURL,
-      notes: data.notes,
-      status: "applied",
-      id: data.id
-    }, () => {
-      // this.props.handleUpdate(this.state);
-      // setTimeout(() => {
-      //   console.log("running set Time out");
-      //   this.props.handleView('appliedDate', data);
-      // }, 2000);
+    // this.setState({
+    //   company: data.company,
+    //   position: data.position,
+    //   positionURL: data.positionURL,
+    //   notes: data.notes,
+    //   status: "applied",
+    //   id: data.id
+    // }, () => {
+    //   // this.props.handleUpdate(this.state);
+    //   // setTimeout(() => {
+    //   //   console.log("running set Time out");
+    //   //   this.props.handleView('appliedDate', data);
+    //   // }, 2000);
+    //
+    //   this.props.handleView('appliedDate', data, () => {
+    //     this.props.handleUpdate(this.state);
+    //   })
+    //
+    //
+    // })
 
-      this.props.handleView('appliedDate', data, () => {
-        this.props.handleUpdate(this.state);
-      })
+this.props.handleView('appliedDate', data);
 
-
-    })
   }
 
   // showForm(job){
