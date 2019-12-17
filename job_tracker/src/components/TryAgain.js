@@ -14,9 +14,9 @@ class TryAgain extends React.Component{
               <h4>Date created: {job.listingDate}</h4>
               <h4>Date applied: {job.applyDate}</h4>
               <h4>Date interview: {job.interviewDate}</h4>
+              <h4>Date rejected: {job.tryAgainDate}</h4>
               <h4>Company: {job.company}</h4>
-
-              <a href={job.positionURL}>Position: {job.position}</a>
+              <h4>Position: <a href={job.positionURL}>{job.position}</a></h4>
               <h4>Notes:</h4>
               <textarea readOnly value={job.notes} /><br/>
 

@@ -44,8 +44,8 @@ class Listings{
   }
 
   static function update($updated_listing){
-    $query = "UPDATE listings SET company = $1, position = $2, positionurl = $3, notes = $4, status = $5, applyDate = $6, interviewDate = $7 WHERE id = $8";
-    $query_params = array($updated_listing->company, $updated_listing->position, $updated_listing->positionURL, $updated_listing->notes, $updated_listing->status, $updated_listing->applyDate, $updated_listing->interviewDate, $updated_listing->id);
+    $query = "UPDATE listings SET company = $1, position = $2, positionurl = $3, notes = $4, status = $5, applyDate = $6, interviewDate = $7, tryAgainDate = $8 WHERE id = $9";
+    $query_params = array($updated_listing->company, $updated_listing->position, $updated_listing->positionURL, $updated_listing->notes, $updated_listing->status, $updated_listing->applyDate, $updated_listing->interviewDate, $updated_listing->tryAgainDate, $updated_listing->id);
     pg_query_params($query, $query_params);
 
     return self::all();

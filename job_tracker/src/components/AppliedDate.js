@@ -11,26 +11,18 @@ class Form extends React.Component {
       applyDate: "",
       interviewDate: "",
       id: ""
-      // status: "applied"
-      // status: (this.props.view==="appliedDate")? "applied":"interview"
     }
   }
 
 
   handleChange = (event) => {
     this.setState({[event.target.id]: event.target.value});
-
-    console.log(this.props.formInputs.applyDate);
-    console.log(this.props.formInputs);
-    console.log(this.state);
   }
 
 
   handleSubmit = (event) => {
-
     event.preventDefault()
     const argument = {...this.state, status: (this.props.view==="appliedDate")? "applied":"interview"}
-    console.log(argument);
     this.props.handleUpdate(argument)
   }
 
@@ -60,33 +52,15 @@ class Form extends React.Component {
 
           <h4>Company: {this.props.formInputs.company}</h4>
           <h4>Position: {this.props.formInputs.position}</h4>
-          <h4>Apply Date: {this.props.formInputs.applyDate}</h4>
 
-
-              {/*
-                <label htmlFor='applyDate'>Date Applied</label>
-                */}
-
-
+          <form onSubmit={this.handleSubmit}>
               {(this.props.view==="appliedDate")?
-
-                <>
-                <form onSubmit={this.handleSubmit}>
                 <input type='date' value={this.state.applyDate} id='applyDate' onChange={this.handleChange}/>
-                <input type='submit' value="Submit"/>
-                </form>
-                </>
-
-                 :
-                 <>
-                 <form onSubmit={this.handleSubmit}>
-                 <input type='date' value={this.state.interviewDate} id='interviewDate' onChange={this.handleChange}/>
-                 <input type='submit' value="Submit"/>
-                 </form>
-                 </>
-
+                :
+                <input type='date' value={this.state.interviewDate} id='interviewDate' onChange={this.handleChange}/>
                }
-
+               <input type='submit' value="Submit"/>
+          </form>
 
 
 

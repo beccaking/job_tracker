@@ -46,20 +46,6 @@ class Form extends React.Component {
           <h4>Notes:</h4>
 
           <form onSubmit={this.handleSubmit}>
-
-
-            {/*
-              <label htmlFor='company'>Company</label>
-              <input type='text' value={this.state.company} id='company' onChange={this.handleChange}/>
-              <label htmlFor='position'>Position</label>
-              <input type='text' value={this.state.position} id='position' onChange={this.handleChange}/>
-              <label htmlFor='positionURL'>URL</label>
-              <input type='text' value={this.state.positionURL} id='positionURL' onChange={this.handleChange}/>
-              <label htmlFor='notes'>Notes</label>
-
-              <input type='text' value={this.state.notes} id='notes' onChange={this.handleChange}/>
-              */}
-
             <textarea rows="4" cols="50" value={this.state.notes} id='notes' onChange={this.handleChange}></textarea>
             <input type='submit' value="Edit"/>
             <button onClick={()=>{this.props.handleView('list')}}>Cancel</button>

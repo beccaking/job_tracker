@@ -8,8 +8,8 @@ class Form extends React.Component {
       position: '',
       positionURL: '',
       notes: '',
-      // listingDate: new Date()
-      listingDate: new Date(new Date().setDate(new Date().getDate()-2))
+      listingDate: new Date()
+      // listingDate: new Date(new Date().setDate(new Date().getDate()-10))
     }
   }
 
@@ -21,18 +21,6 @@ class Form extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    // if(this.props.view === 'list') {
-    //   this.props.handleCreate(this.state);
-    //   this.setState({
-    //     company: '',
-    //     position: '',
-    //     positionURL: '',
-    //     notes: ''
-    //   })
-    // } else if(this.props.view === 'form') {
-    //   this.props.handleUpdate(this.state)
-    // }
-
     this.props.handleCreate(this.state);
     this.setState({
       company: '',
