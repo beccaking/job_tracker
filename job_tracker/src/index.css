@@ -4,7 +4,10 @@
 }
 
 body{
-  background-color: #ffffe6;
+  /* background-color: #ffffe6; */
+  background: url("calendar.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 img {
@@ -73,7 +76,6 @@ button:hover {
   justify-content: space-around;
   margin: 10px auto;
   border-top: 2px solid black;
-  border-bottom: 2px solid black;
 }
 
 .more {
