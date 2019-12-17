@@ -18,10 +18,14 @@ class Applied extends React.Component{
       position: data.position,
       positionURL: data.positionURL,
       notes: data.notes,
+      applyDate: data.applyDate,
       status: "interview",
       id: data.id
     }, () => {
       this.props.handleUpdate(this.state);
+      setTimeout(() => {
+        this.props.handleView('interviewDate', data);
+      }, 2000);
     })
   }
 

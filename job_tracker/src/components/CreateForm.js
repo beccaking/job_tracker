@@ -9,7 +9,7 @@ class Form extends React.Component {
       positionURL: '',
       notes: '',
       // listingDate: new Date()
-      listingDate: new Date(new Date().setDate(new Date().getDate()-18))
+      listingDate: new Date(new Date().setDate(new Date().getDate()-2))
     }
   }
 

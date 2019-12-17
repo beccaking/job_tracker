@@ -112,11 +112,14 @@ class App extends React.Component{
       case 'applied':
       case 'interview':
       case 'appliedDate':
+      case 'interviewDate':
       formInputs = {
         company: data.company,
         position: data.position,
         positionURL: data.positionURL,
         notes: data.notes,
+        applydate: data.applyDate,
+        interviewDate: data.interviewDate,
         id: data.id
       }
       break
@@ -167,7 +170,7 @@ class App extends React.Component{
           }
 
           {
-            (this.state.view === 'appliedDate')
+            (this.state.view === 'appliedDate'||this.state.view ==='interviewDate')
             ?
             <AppliedDate handleUpdate={this.handleUpdate} handleView={this.handleView} formInputs={this.state.formInputs} view={this.state.view}/>
             : null
