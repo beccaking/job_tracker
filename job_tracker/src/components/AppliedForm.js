@@ -32,6 +32,8 @@ class Form extends React.Component {
       position: this.props.formInputs.position,
       positionURL: this.props.formInputs.positionURL,
       notes: this.props.formInputs.notes,
+      applyDate: this.props.formInputs.applyDate,
+      interviewDate: this.props.formInputs.interviewDate,
       id: this.props.formInputs.id
     })
   }
