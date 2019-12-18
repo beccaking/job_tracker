@@ -1,45 +1,68 @@
-# Job Tracker
-A tracking application for job seekers, built by software engineering students Wincy Law and Becca King
-[Live site]
-(http://job-tracker-phpreact.herokuapp.com/job_tracker/build/index.html)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Technologies Used
-* PHP
-* SQL
-* React
-* Heroku
+## Available Scripts
 
-## WireFraming
-![wire framing](img/wireFraming.jpg)
+In the project directory, you can run:
 
-## Our Approach
-We began our work by creating a SQL-based API written in PHP and creating a front end environment for the data with React.
-We then integrated the two components, first using a locally hosted SQL database and then using an online postgres database that we deployed through Heroku.
+### `npm start`
 
-## App.js JSX structure
-```html
-1  <div className = "container">
-2  
-3      <header></header>
-4
-5      <div className = "addForm">
-6         {this.state.view ? <Different Form /> : null}
-7      </div>
-8     
-9      <div className = "box-container">
-10         <Listings />
-11         <Applied />
-12         <Interview />
-13         <TryAgain />
-14     </div>
-15
-16  </div>
-```
-## Code Structure
-![flow chart](img/flowChart.jpg)
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Unsolved Problems
-We encountered access issues when deploying our fully integrated site through Heroku, which we were able to circumvent, but which makes updating the site a complicated multi-step process non-ideal for production.
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-## Notes
-After using an npm run build command, we are able to create the files necessary to host the fully integrated site at the link listed above, but only after using a search and replace function to redirect all scripts in job_tracker/job_tracker/build/index.html that start with /static to instead start with job_tracker/build/static. Every time the site is updated, the npm run build command and script adjustments must be performed again.
+### `npm test`
+
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
